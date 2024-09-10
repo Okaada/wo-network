@@ -1,101 +1,104 @@
-import Image from "next/image";
+import React from 'react';
+import { AdjustmentsHorizontalIcon, ChatBubbleBottomCenterIcon, LightBulbIcon, PresentationChartBarIcon } from '@heroicons/react/24/outline';
+import { ComputerDesktopIcon } from '@heroicons/react/24/outline';
 
-export default function Home() {
+const CompanyPage = () => {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
+    <div className="bg-gray-50 min-h-screen">
+      {/* Container da imagem no topo */}
+      <div className="relative w-full h-64">
+        <img 
+          src="/images/banner2.png" 
+          alt="Imagem topo" 
+          className="w-full h-full object-cover"
         />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        {/* Navbar sobreposta */}
+        <nav className="absolute top-0 left-0 w-full bg-white bg-opacity-90 shadow-lg">
+          <div className="container mx-auto flex justify-between items-center p-4">
+            <div className="text-xl font-bold text-yellow-500">
+              W.O Network
+            </div>
+            <div className="space-x-8">
+              <a href="#apresentacao" className="text-yellow-500 hover:text-yellow-600">Home</a>
+              <a href="#trabalhos" className="text-yellow-500 hover:text-yellow-600">Trabalhos</a>
+              <a href="#clientes" className="text-yellow-500 hover:text-yellow-600">Clientes</a>
+              <a href="#sobre" className="text-yellow-500 hover:text-yellow-600">Sobre Nós</a>
+              <a href="#contato" className="text-yellow-500 hover:text-yellow-600">Contato</a>
+            </div>
+          </div>
+        </nav>
+      </div>
+
+      <div className="space-y-10 p-8 pt-24">
+        {/* Apresentação da Empresa */}
+        <section id="apresentacao" className="text-center py-12 bg-white shadow-md rounded-lg">
+          <h2 className="text-4xl font-bold" style={{ color: '#ffc929' }}>Podemos alavancar os processos da sua Empresa!</h2>
+          <p className="mt-4 text-lg text-gray-700">Otimize sua infraestrutura com soluções eficientes e suporte especializado
+            com experiência comprovada em redes, suporte técnico e infraestrutura, ofereço soluções personalizadas para garantir que sua empresa opere de forma segura, escalável e eficiente.
+            Desde a implementação e manutenção de redes até a otimização de processos, estou preparado para ajudar sua equipe a focar no que realmente importa: o crescimento do negócio.</p>
+        </section>
+
+        {/* Trabalhos oferecidos */}
+        <section id="trabalhos" className="py-12">
+          <h2 className="text-4xl font-bold text-center" style={{ color: '#ffc929' }}>Soluções</h2>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
+            <li className="bg-white p-6 rounded-lg shadow-lg flex flex-col items-center text-center">
+              <LightBulbIcon className="h-12 w-12 text-yellow-500 mb-4" />
+              <span className="font-bold text-lg text-gray-700">Soluções de fibra óptica</span>
+              <p className="mt-2 text-gray-600">Oferecemos soluções avançadas em fibra óptica para conectividade e telecomunicações.</p>
+            </li>
+            <li className="bg-white p-6 rounded-lg shadow-lg flex flex-col items-center text-center">
+              <ComputerDesktopIcon className="h-12 w-12 text-yellow-500 mb-4" />
+              <span className="font-bold text-lg text-gray-700">Infraestrutura</span>
+              <p className="mt-2 text-gray-600">Implementação e otimização de redes, servidores e sistemas para garantir alta disponibilidade, segurança e escalabilidade. </p>
+            </li>
+            <li className="bg-white p-6 rounded-lg shadow-lg flex flex-col items-center text-center">
+              <ChatBubbleBottomCenterIcon className="h-12 w-12 text-yellow-500 mb-4" />
+              <span className="font-bold text-lg text-gray-700">Suporte</span>
+              <p className="mt-2 text-gray-600">Atendimento especializado para resolução de problemas técnicos e suporte contínuo.</p>
+            </li>
+            <li className="bg-white p-6 rounded-lg shadow-lg flex flex-col items-center text-center">
+              <AdjustmentsHorizontalIcon className="h-12 w-12 text-yellow-500 mb-4" />
+              <span className="font-bold text-lg text-gray-700">Processos</span>
+              <p className="mt-2 text-gray-600">Implantação de processos para atender às necessidades dos clientes.</p>
+            </li>
+          </ul>
+        </section>
+
+        {/* Sobre Nós */}
+        <section id="sobre" className="py-12">
+          <h2 className="text-4xl font-bold text-center" style={{ color: '#ffc929' }}>Sobre Nós</h2>
+          <p className="mt-4 text-lg text-center max-w-4xl mx-auto text-gray-700">A W.O Network foi fundada em 3 de agosto de 2000 com a missão de se tornar uma companhia com foco singular na simplificação dos serviços de tecnologia da informação.
+            A visão neste momento é construir uma empresa que não só apoia, mas também promove o crescimento de nossos clientes.
+            Oferecemos soluções tecnológicas e equipe altamente qualificada para execução dos mais variados projetos como: Conectorização Óptica, Fusão, Certificação, Cabeamento Estruturado, Organização de Racks, Manutenção em Computadores, Banco de Dados, Consultoria em Ambientes Windows e Linux e muitos outros.
+            <br></br>
+            Nossa missão é promover soluções robustas e disponibilizar o melhor custo benefício, desempenhando nossos projetos com foco no crescimento de nossos clientes.
+          </p>
+        </section>
+
+        {/* Formulário de Contato */}
+        <section id="contato" className="py-12 bg-white shadow-md rounded-lg">
+          <h2 className="text-4xl font-bold text-center" style={{ color: '#ffc929' }}>Contato para Orçamentos</h2>
+          <form className="max-w-lg mx-auto mt-8 space-y-6">
+            <div>
+              <label className="block text-sm font-medium text-gray-700">Nome</label>
+              <input type="text" className="mt-1 block w-full p-2 border rounded-lg" placeholder="Seu nome" />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700">Email</label>
+              <input type="email" className="mt-1 block w-full p-2 border rounded-lg" placeholder="Seu email" />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700">Mensagem</label>
+              <textarea className="mt-1 block w-full p-2 border rounded-lg" rows={4} placeholder="Escreva sua mensagem"></textarea>
+            </div>
+            <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">Enviar</button>
+          </form>
+        </section>
+      </div>
     </div>
   );
-}
+};
+
+export default CompanyPage;
