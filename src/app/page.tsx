@@ -3,33 +3,28 @@ import React, { useState } from 'react';
 import { AdjustmentsHorizontalIcon, ChatBubbleBottomCenterIcon, LightBulbIcon, Bars4Icon, XMarkIcon, ComputerDesktopIcon } from '@heroicons/react/24/outline';
 
 const CompanyPage = () => {
-  const [isOpen, setIsOpen] = useState(false); // Estado para controlar o menu hamburguer
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="bg-gray-50 min-h-screen">
-      {/* Adicionando scroll-padding-top no HTML */}
       <style jsx global>{`
         html {
           scroll-padding-top: 80px; /* Compensar a altura da navbar */
         }
       `}</style>
 
-      {/* Navbar fixa e hamburguer */}
       <nav className="fixed top-0 left-0 w-full bg-white bg-opacity-95 shadow-lg z-50">
         <div className="container mx-auto flex justify-between items-center p-4">
-          {/* Logo e Nome da Empresa à esquerda */}
           <div className="flex items-center space-x-3">
             <img src="/images/wo.png" alt="Logo W.O Network" className="h-auto w-auto" />
           </div>
 
-          {/* Menu hamburguer para mobile */}
           <div className="md:hidden">
             <button onClick={() => setIsOpen(!isOpen)} className="text-yellow-500 focus:outline-none">
               {isOpen ? <XMarkIcon className="h-8 w-8" /> : <Bars4Icon className="h-8 w-8" />}
             </button>
           </div>
 
-          {/* Links de Navegação para desktop */}
           <div className={`hidden md:flex space-x-8`}>
             <a href="#apresentacao" className="text-yellow-500 font-bold hover:text-yellow-600 transition duration-300">Home</a>
             <a href="#clientes" className="text-yellow-500 font-bold hover:text-yellow-600 transition duration-300">Clientes</a>
@@ -39,7 +34,6 @@ const CompanyPage = () => {
           </div>
         </div>
 
-        {/* Menu hamburguer dropdown */}
         {isOpen && (
           <div className="md:hidden bg-white">
             <a href="#apresentacao" className="block px-4 py-2 text-yellow-500 font-bold hover:text-yellow-600 transition duration-300">Home</a>
@@ -51,9 +45,7 @@ const CompanyPage = () => {
         )}
       </nav>
 
-      {/* Hero Section */}
       <div className="relative bg-white min-h-screen overflow-hidden">
-        {/* Efeitos de fundo com bolinhas */}
         <div className="absolute inset-0 z-0 pointer-events-none">
           <div className="bg-yellow-300 rounded-full w-24 h-24 absolute top-10 left-10 opacity-30 animate-pulse"></div>
           <div className="bg-yellow-400 rounded-full w-16 h-16 absolute top-1/4 right-20 opacity-50 animate-bounce"></div>
@@ -62,7 +54,6 @@ const CompanyPage = () => {
         </div>
 
         <div className="container relative z-10 mx-auto flex flex-col md:flex-row items-center justify-between p-8 pt-20">
-          {/* Apresentação da Empresa */}
           <section id="apresentacao" className="w-full md:w-1/2 text-left space-y-6 p-6">
             <h2 className="text-5xl font-bold leading-snug tracking-tight text-left text-[#ffc929]">
               Oferecemos o <span className="block">suporte que você</span> precisa para se destacar!
@@ -75,7 +66,6 @@ const CompanyPage = () => {
             </a>
           </section>
 
-          {/* Imagem ao lado direito, escondida no mobile */}
           <div className="hidden md:block w-full md:w-1/2 pl-0 md:pl-16">
             <img
               src="/images/herosection.png"
@@ -87,8 +77,7 @@ const CompanyPage = () => {
         </div>
       </div>
 
-      {/* Clientes Section */}
-      <section id="clientes" className="py-12 px-4 sm:px-8 bg-gray-50"> {/* Adicionado padding para telas menores */}
+      <section id="clientes" className="py-12 px-4 sm:px-8 bg-gray-50">
         <h2 className="text-2xl sm:text-4xl font-bold text-center mb-8" style={{ color: '#ffc929' }}>
           Nossos Clientes
         </h2>
@@ -96,17 +85,13 @@ const CompanyPage = () => {
           Ao longo dos anos, tivemos o privilégio de trabalhar com várias empresas e instituições de diversos setores, oferecendo soluções personalizadas e suporte especializado para impulsionar seus negócios.
         </p>
 
-        {/* Grade de Clientes */}
         <div className="container mx-auto grid grid-cols-2 sm:grid-cols-1 lg:grid-cols-3 gap-8 items-center justify-center">
-          {/* Cliente 1 */}
           <div className="flex items-center justify-center p-4 bg-white shadow-md rounded-lg">
             <img src="/images/citrosuco.png" alt="Cliente 1" className="h-12 sm:h-16 w-auto object-contain" />
           </div>
-          {/* Cliente 2 */}
           <div className="flex items-center justify-center p-4 bg-white shadow-md rounded-lg">
             <img src="/images/fischer.png" alt="Cliente 2" className="h-12 sm:h-16 w-auto object-contain" />
           </div>
-          {/* Cliente 3 */}
           <div className="flex items-center justify-center p-4 bg-white shadow-md rounded-lg">
             <img src="/images/terral.png" alt="Cliente 3" className="h-12 sm:h-16 w-auto object-contain" />
           </div>
@@ -117,8 +102,7 @@ const CompanyPage = () => {
         </p>
       </section>
 
-      {/* Trabalhos oferecidos */}
-      <section id="trabalhos" className="py-12 px-4 sm:px-8 bg-white"> {/* Adicionado padding para telas menores */}
+      <section id="trabalhos" className="py-12 px-4 sm:px-8 bg-white">
         <div className="container mx-auto text-center">
           <h2 className="text-3xl sm:text-5xl font-bold mb-8" style={{ color: '#ffc929' }}>
             Nossas Soluções
@@ -127,9 +111,7 @@ const CompanyPage = () => {
             Oferecemos um portfólio diversificado de soluções tecnológicas, desenvolvidas para garantir a conectividade, eficiência e segurança que sua empresa precisa.
           </p>
 
-          {/* Grid de Soluções */}
           <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 lg:gap-10">
-            {/* Suporte Técnico em destaque */}
             <li className="md:col-span-2 lg:col-span-2 bg-yellow-100 p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:scale-105 flex flex-col items-center text-center">
               <ChatBubbleBottomCenterIcon className="h-14 w-14 text-yellow-600 mb-4" />
               <h3 className="font-semibold text-2xl text-gray-800">Suporte Técnico</h3>
@@ -138,7 +120,6 @@ const CompanyPage = () => {
               </p>
             </li>
 
-            {/* Soluções de Fibra Óptica */}
             <li className="md:col-span-2 lg:col-span-2 p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:scale-105 flex flex-col items-center text-center">
               <LightBulbIcon className="h-12 w-12 text-yellow-500 mb-4" />
               <h3 className="font-semibold text-xl text-gray-800">Soluções de Fibra Óptica</h3>
@@ -147,7 +128,6 @@ const CompanyPage = () => {
               </p>
             </li>
 
-            {/* Infraestrutura */}
             <li className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 transform hover:scale-105 flex flex-col items-center text-center">
               <ComputerDesktopIcon className="h-12 w-12 text-yellow-500 mb-4" />
               <h3 className="font-semibold text-xl text-gray-800">Infraestrutura</h3>
@@ -156,7 +136,6 @@ const CompanyPage = () => {
               </p>
             </li>
 
-            {/* Gestão de Processos */}
             <li className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 transform hover:scale-105 flex flex-col items-center text-center">
               <AdjustmentsHorizontalIcon className="h-12 w-12 text-yellow-500 mb-4" />
               <h3 className="font-semibold text-xl text-gray-800">Gestão de Processos</h3>
@@ -168,10 +147,8 @@ const CompanyPage = () => {
         </div>
       </section>
 
-      {/* Sobre Nós */}
-      <section id="sobre" className="py-12 px-4 sm:px-8 bg-gray-50"> {/* Adicionado padding para telas menores */}
+      <section id="sobre" className="py-12 px-4 sm:px-8 bg-gray-50">
         <div className="container mx-auto flex flex-col md:flex-row items-center justify-between">
-          {/* Texto à esquerda */}
           <div className="w-full md:w-1/2 space-y-6">
             <h2 className="text-3xl sm:text-5xl font-bold mb-6" style={{ color: '#ffc929' }}>
               Sobre Nós
@@ -184,7 +161,6 @@ const CompanyPage = () => {
             </p>
           </div>
 
-          {/* Imagem à direita, escondida no mobile */}
           <div className="hidden md:block w-full md:w-1/2 pl-0 md:pl-16">
             <img
               src="/images/about-bg.png"
@@ -196,8 +172,7 @@ const CompanyPage = () => {
         </div>
       </section>
 
-      {/* Formulário de Contato */}
-      <section id="contato" className="py-8 sm:py-12 px-4 bg-white shadow-md rounded-lg"> {/* Adicionado padding para telas menores */}
+      <section id="contato" className="py-8 sm:py-12 px-4 bg-white shadow-md rounded-lg">
         <h2 className="text-2xl sm:text-4xl font-bold text-center" style={{ color: '#ffc929' }}>Contato para Orçamentos</h2>
         <form className="max-w-lg mx-auto mt-8 space-y-6">
           <div>
