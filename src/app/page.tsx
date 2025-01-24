@@ -1,8 +1,14 @@
 'use client';
 import React, { useState } from 'react';
-import { AdjustmentsHorizontalIcon, ChatBubbleBottomCenterIcon, LightBulbIcon, Bars4Icon, XMarkIcon, ComputerDesktopIcon } from '@heroicons/react/24/outline';
+import {
+  AdjustmentsHorizontalIcon, ChatBubbleBottomCenterIcon,
+  LightBulbIcon, Bars4Icon, XMarkIcon,
+  ComputerDesktopIcon, GlobeAltIcon, BookOpenIcon
+} from '@heroicons/react/24/outline';
+import NavLink from '@/app/navlink';
 
 const CompanyPage = () => {
+
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -26,11 +32,16 @@ const CompanyPage = () => {
           </div>
 
           <div className={`hidden md:flex space-x-8`}>
-            <a href="#apresentacao" className="text-yellow-500 font-bold hover:text-yellow-600 transition duration-300">Home</a>
-            <a href="#clientes" className="text-yellow-500 font-bold hover:text-yellow-600 transition duration-300">Clientes</a>
-            <a href="#trabalhos" className="text-yellow-500 font-bold hover:text-yellow-600 transition duration-300">Soluções</a>
-            <a href="#sobre" className="text-yellow-500 font-bold hover:text-yellow-600 transition duration-300">Sobre Nós</a>
-            <a href="#contato" className="text-yellow-500 font-bold hover:text-yellow-600 transition duration-300">Contato</a>
+            <NavLink href="#apresentacao" text="Home" />
+            <NavLink href="#clientes" text="Clientes" />
+            <NavLink href="#trabalhos" text="Soluções" />
+            <NavLink href="#sobre" text="Sobre Nós" />
+            <NavLink
+              href="https://wonetwork.vagas.solides.com.br"
+              text="Trabalhe Conosco"
+              external
+            />
+            <NavLink href="#contato" text="Contato" />
           </div>
         </div>
 
@@ -116,7 +127,24 @@ const CompanyPage = () => {
               <ChatBubbleBottomCenterIcon className="h-14 w-14 text-yellow-600 mb-4" />
               <h3 className="font-semibold text-2xl text-gray-800">Suporte Técnico</h3>
               <p className="mt-4 text-gray-700 text-lg">
-                Nossa equipe de analistas e técnicos especializados oferece suporte completo com <strong>Field Service</strong>. Atuamos diretamente na sua empresa para resolver problemas técnicos rapidamente. Se necessário, nossos profissionais podem ficar alocados, garantindo suporte contínuo e personalizado para manter suas operações sempre eficientes e seguras.
+                Nossa equipe de analistas e técnicos especializados oferece suporte completo com
+                <strong>Field Service</strong>.
+                Atuamos diretamente na sua empresa para resolver problemas técnicos rapidamente.
+                Se necessário, nossos profissionais podem ficar alocados, garantindo suporte contínuo e
+                personalizado para manter suas operações sempre eficientes e seguras.
+              </p>
+            </li>
+
+            <li className="md:col-span-2 lg:col-span-2 p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:scale-105 flex flex-col items-center text-center">
+              <GlobeAltIcon className="h-12 w-12 text-yellow-500 mb-4" />
+              <h3 className="font-semibold text-xl text-gray-800">Projetos</h3>
+              <p className="mt-3 text-gray-600">
+                Oferecemos suporte especializado e serviços completos para sua infraestrutura de TI, incluindo:<br></br>
+                • Firewall Fortigate e segurança de rede.<br></br>
+                • Apoio na implantação do SAP S/4HANA.<br></br>
+                • WSUS e atualização centralizada de sistemas.<br></br>
+                • Migração de Active Directory e ambientes de domínio.<br></br>
+                • Virtualização com VMware e Hyper-V.<br></br>
               </p>
             </li>
 
@@ -124,7 +152,10 @@ const CompanyPage = () => {
               <LightBulbIcon className="h-12 w-12 text-yellow-500 mb-4" />
               <h3 className="font-semibold text-xl text-gray-800">Soluções de Fibra Óptica</h3>
               <p className="mt-3 text-gray-600">
-                Implementamos soluções avançadas em fibra óptica para conectividade de alta performance.
+                Levamos conectividade de alta performance para sua empresa.
+                <br></br>
+                Com soluções modernas e eficientes, garantimos velocidade e confiabilidade
+                para a sua infraestrutura de redes.
               </p>
             </li>
 
@@ -132,17 +163,23 @@ const CompanyPage = () => {
               <ComputerDesktopIcon className="h-12 w-12 text-yellow-500 mb-4" />
               <h3 className="font-semibold text-xl text-gray-800">Infraestrutura</h3>
               <p className="mt-3 text-gray-600">
-                Otimização de redes, servidores e sistemas para garantir alta disponibilidade e escalabilidade.
+                Oferecemos peças e soluções completas para infraestrutura de redes,
+                como cabos, conectores, switches, roteadores e muito mais.
               </p>
             </li>
 
             <li className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 transform hover:scale-105 flex flex-col items-center text-center">
-              <AdjustmentsHorizontalIcon className="h-12 w-12 text-yellow-500 mb-4" />
-              <h3 className="font-semibold text-xl text-gray-800">Gestão de Processos</h3>
+              <BookOpenIcon className="h-12 w-12 text-yellow-500 mb-4" />
+              <h3 className="font-semibold text-xl text-gray-800">Governança</h3>
               <p className="mt-3 text-gray-600">
-                Implementação de processos ágeis e eficientes, otimizados para atender às suas necessidades.
+                Garanta controle, eficiência e conformidade em seus processos de TI. 
+                <br></br>
+                Com nossas soluções de governança, ajudamos sua empresa a estruturar políticas, monitorar ativos e otimizar a tomada de decisão, tudo alinhado às melhores práticas de mercado.
+                <br></br>
+                Transforme sua gestão de TI com segurança e estratégia!
               </p>
             </li>
+
           </ul>
         </div>
       </section>
@@ -157,7 +194,11 @@ const CompanyPage = () => {
               Fundada em 3 de agosto de 2000, a W.O Network nasceu com o compromisso de simplificar a gestão de serviços de tecnologia da informação. Nossa missão é fornecer soluções tecnológicas eficientes, personalizadas e de alta qualidade, que atendam às necessidades específicas de cada cliente.
             </p>
             <p className="text-lg sm:text-xl text-gray-700 leading-relaxed">
-              Com uma equipe altamente qualificada, atuamos em diversos projetos, desde Conectorização Óptica, Fusão e Certificação, até Cabeamento Estruturado, Organização de Racks, Manutenção em Computadores e Consultoria especializada em ambientes Windows e Linux. Estamos preparados para impulsionar sua infraestrutura tecnológica.
+              Com uma equipe altamente qualificada, atuamos em diversos projetos,
+              desde Conectorização Óptica, Fusão e Certificação, até Cabeamento Estruturado,
+              Organização de Racks, Manutenção em Computadores e
+              Consultoria especializada em ambientes Windows e Linux.
+              Estamos preparados para impulsionar sua infraestrutura tecnológica.
             </p>
           </div>
 
@@ -172,24 +213,43 @@ const CompanyPage = () => {
         </div>
       </section>
 
-      <section id="contato" className="py-8 sm:py-12 px-4 bg-white shadow-md rounded-lg">
+      <section id="profissionais" className="py-12 px-4 sm:px-8 bg-white">
+        <div className="container mx-auto flex flex-col md:flex-row items-center justify-between">
+          <div className="w-full md:w-1/2 space-y-6">
+            <h2 className="text-3xl sm:text-5xl font-bold mb-6" style={{ color: '#ffc929' }}>
+              Nossos Profissionais
+            </h2>
+            <p className="text-lg sm:text-xl text-gray-700 leading-relaxed">
+              Nossa equipe é formada por profissionais altamente qualificados e certificados pela Microsoft, garantindo o mais alto nível de excelência técnica em cada projeto.
+            </p>
+            <p className="text-lg sm:text-xl text-gray-700 leading-relaxed">
+              Essas certificações representam nosso compromisso com a entrega de soluções inovadoras e confiáveis, alinhadas às melhores práticas do mercado de tecnologia.
+            </p>
+            <p className="text-lg sm:text-xl text-gray-700 leading-relaxed">
+              Seja para consultoria, implementação ou suporte, você pode contar com a expertise da nossa equipe para atender às necessidades específicas da sua empresa.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contato" className="py-8 sm:py-12 px-4 bg-gray-50 shadow-md rounded-lg">
         <h2 className="text-2xl sm:text-4xl font-bold text-center" style={{ color: '#ffc929' }}>Contato para Orçamentos</h2>
         <form className="max-w-lg mx-auto mt-8 space-y-6">
           <div>
             <label className="block text-sm font-medium text-gray-700">Nome</label>
-            <input type="text" className="mt-1 block w-full p-2 border rounded-lg" placeholder="Seu nome" />
+            <input type="text" className="mt-1 block w-full p-2 border rounded-lg text-gray-700" placeholder="Seu nome" />
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700">Email</label>
-            <input type="email" className="mt-1 block w-full p-2 border rounded-lg" placeholder="Seu email" />
+            <input type="email" className="mt-1 block w-full p-2 border rounded-lg text-gray-700" placeholder="Seu email" />
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700">Telefone</label>
-            <input type="tel" className="mt-1 block w-full p-2 border rounded-lg" placeholder="Seu telefone" />
+            <input type="tel" className="mt-1 block w-full p-2 border rounded-lg text-gray-700" placeholder="Seu telefone" />
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700">Mensagem</label>
-            <textarea className="mt-1 block w-full p-2 border rounded-lg" rows={4} placeholder="Escreva sua mensagem"></textarea>
+            <textarea className="mt-1 block w-full p-2 border rounded-lg text-gray-700" rows={4} placeholder="Escreva sua mensagem"></textarea>
           </div>
           <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">Enviar</button>
         </form>

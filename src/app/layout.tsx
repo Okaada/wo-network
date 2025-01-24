@@ -15,7 +15,7 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: "W.O Network",
-  description: "A Solução para seu neg",
+  description: "A Solução para seu negócio",
 };
 
 export default function RootLayout({
