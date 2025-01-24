@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import {
-  AdjustmentsHorizontalIcon, ChatBubbleBottomCenterIcon,
+  ChatBubbleBottomCenterIcon,
   LightBulbIcon, Bars4Icon, XMarkIcon,
   ComputerDesktopIcon, GlobeAltIcon, BookOpenIcon
 } from '@heroicons/react/24/outline';
