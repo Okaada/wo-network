@@ -8,14 +8,54 @@ import {
 import NavLink from '@/app/navlink';
 
 const CompanyPage = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    message: '',
+  });
+
+  const [status, setStatus] = useState<string | null>(null);
 
   const [isOpen, setIsOpen] = useState(false);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus('Enviando...');
+
+    try {
+      const res = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          to: 'ravelokada@gmail.com', // E-mail da empresa
+          subject: `Contato de ${formData.name}`, // Assunto do e-mail
+          text: `Mensagem: ${formData.message}`,
+          email: formData.email
+        }),
+      });
+
+      if (res.ok) {
+        setStatus('Mensagem enviada com sucesso!');
+        setFormData({ name: '', email: '', phone: '', message: '' }); // Limpar formulário
+      } else {
+        setStatus('Erro ao enviar a mensagem. Tente novamente.');
+      }
+    } catch (error) {
+      setStatus('Erro ao enviar a mensagem. Tente novamente.');
+    }
+  };
 
   return (
     <div className="bg-gray-50 min-h-screen">
       <style jsx global>{`
         html {
-          scroll-padding-top: 80px; /* Compensar a altura da navbar */
+          scroll-padding-top: 80px;
         }
       `}</style>
 
@@ -36,6 +76,7 @@ const CompanyPage = () => {
             <NavLink href="#clientes" text="Clientes" />
             <NavLink href="#trabalhos" text="Soluções" />
             <NavLink href="#sobre" text="Sobre Nós" />
+            <NavLink href="#profissionais" text="Nossos Profissionais" />
             <NavLink
               href="https://wonetwork.vagas.solides.com.br"
               text="Trabalhe Conosco"
@@ -51,6 +92,7 @@ const CompanyPage = () => {
             <a href="#clientes" className="block px-4 py-2 text-yellow-500 font-bold hover:text-yellow-600 transition duration-300">Clientes</a>
             <a href="#trabalhos" className="block px-4 py-2 text-yellow-500 font-bold hover:text-yellow-600 transition duration-300">Soluções</a>
             <a href="#sobre" className="block px-4 py-2 text-yellow-500 font-bold hover:text-yellow-600 transition duration-300">Sobre Nós</a>
+            <a href="#profissionais" className="block px-4 py-2 text-yellow-500 font-bold hover:text-yellow-600 transition duration-300">Profissionais</a>
             <a href="#contato" className="block px-4 py-2 text-yellow-500 font-bold hover:text-yellow-600 transition duration-300">Contato</a>
           </div>
         )}
@@ -127,8 +169,8 @@ const CompanyPage = () => {
               <ChatBubbleBottomCenterIcon className="h-14 w-14 text-yellow-600 mb-4" />
               <h3 className="font-semibold text-2xl text-gray-800">Suporte Técnico</h3>
               <p className="mt-4 text-gray-700 text-lg">
-                Nossa equipe de analistas e técnicos especializados oferece suporte completo com
-                <strong>Field Service</strong>.
+                Nossa equipe de analistas e técnicos especializados oferece suporte completo com 
+                <strong> Field Service</strong>.
                 Atuamos diretamente na sua empresa para resolver problemas técnicos rapidamente.
                 Se necessário, nossos profissionais podem ficar alocados, garantindo suporte contínuo e
                 personalizado para manter suas operações sempre eficientes e seguras.
@@ -172,7 +214,7 @@ const CompanyPage = () => {
               <BookOpenIcon className="h-12 w-12 text-yellow-500 mb-4" />
               <h3 className="font-semibold text-xl text-gray-800">Governança</h3>
               <p className="mt-3 text-gray-600">
-                Garanta controle, eficiência e conformidade em seus processos de TI. 
+                Garanta controle, eficiência e conformidade em seus processos de TI.
                 <br></br>
                 Com nossas soluções de governança, ajudamos sua empresa a estruturar políticas, monitorar ativos e otimizar a tomada de decisão, tudo alinhado às melhores práticas de mercado.
                 <br></br>
@@ -213,46 +255,106 @@ const CompanyPage = () => {
         </div>
       </section>
 
-      <section id="profissionais" className="py-12 px-4 sm:px-8 bg-white">
-        <div className="container mx-auto flex flex-col md:flex-row items-center justify-between">
-          <div className="w-full md:w-1/2 space-y-6">
+      <section id="profissionais" className="relative py-12 px-4 sm:px-8 bg-white">
+        {/* Elementos de fundo para analogia de conexões */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <div className="bg-yellow-300 rounded-full w-24 h-24 absolute top-10 left-10 opacity-30 animate-pulse"></div>
+          <div className="bg-yellow-400 rounded-full w-16 h-16 absolute top-1/4 right-20 opacity-50 animate-bounce"></div>
+          <div className="bg-yellow-300 rounded-full w-12 h-12 absolute bottom-20 left-1/3 opacity-50 animate-pulse"></div>
+          <div className="bg-yellow-500 rounded-full w-8 h-8 absolute bottom-10 right-10 opacity-30 animate-pulse"></div>
+        </div>
+
+        {/* Conteúdo centralizado */}
+        <div className="container mx-auto flex flex-col items-center text-center z-10 relative">
+          <div className="w-full md:w-2/3 space-y-6">
             <h2 className="text-3xl sm:text-5xl font-bold mb-6" style={{ color: '#ffc929' }}>
               Nossos Profissionais
             </h2>
             <p className="text-lg sm:text-xl text-gray-700 leading-relaxed">
-              Nossa equipe é formada por profissionais altamente qualificados e certificados pela Microsoft, garantindo o mais alto nível de excelência técnica em cada projeto.
+              Nossa equipe é composta por especialistas altamente qualificados, certificados em tecnologias e frameworks reconhecidos globalmente. Esse nível de especialização nos permite oferecer soluções tecnológicas de ponta, sob medida para atender às necessidades mais exigentes.
             </p>
             <p className="text-lg sm:text-xl text-gray-700 leading-relaxed">
-              Essas certificações representam nosso compromisso com a entrega de soluções inovadoras e confiáveis, alinhadas às melhores práticas do mercado de tecnologia.
+              As certificações que nossos profissionais possuem refletem o compromisso com a excelência e o alinhamento às melhores práticas do setor. Confira algumas das principais certificações que fazem parte do nosso portfólio:
+            </p>
+            <ul className="list-disc pl-6 text-lg sm:text-xl text-gray-700 leading-relaxed inline-block text-left">
+              <li>ITIL Fundamentals</li>
+              <li>COBIT Fundamentals</li>
+              <li>ISO 20000</li>
+              <li>AZ-900 - Microsoft Azure Fundamentals</li>
+              <li>AZ-104 - Microsoft Azure Administrator</li>
+              <li>AZ-305 - Microsoft Azure Solutions Architect Expert</li>
+            </ul>
+            <p className="text-lg sm:text-xl text-gray-700 leading-relaxed">
+              Cada certificação reforça nossa capacidade de oferecer serviços de consultoria, implementação e suporte com precisão técnica e agilidade, sempre priorizando os objetivos do seu negócio.
             </p>
             <p className="text-lg sm:text-xl text-gray-700 leading-relaxed">
-              Seja para consultoria, implementação ou suporte, você pode contar com a expertise da nossa equipe para atender às necessidades específicas da sua empresa.
+              Conte com a expertise da nossa equipe para transformar desafios tecnológicos em oportunidades de crescimento e inovação para sua empresa.
             </p>
           </div>
         </div>
       </section>
 
       <section id="contato" className="py-8 sm:py-12 px-4 bg-gray-50 shadow-md rounded-lg">
-        <h2 className="text-2xl sm:text-4xl font-bold text-center" style={{ color: '#ffc929' }}>Contato para Orçamentos</h2>
-        <form className="max-w-lg mx-auto mt-8 space-y-6">
+        <h2 className="text-2xl sm:text-4xl font-bold text-center" style={{ color: '#ffc929' }}>
+          Contato para Orçamentos
+        </h2>
+        <form onSubmit={handleSubmit} className="max-w-lg mx-auto mt-8 space-y-6">
           <div>
             <label className="block text-sm font-medium text-gray-700">Nome</label>
-            <input type="text" className="mt-1 block w-full p-2 border rounded-lg text-gray-700" placeholder="Seu nome" />
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleInputChange}
+              className="mt-1 block w-full p-2 border rounded-lg text-gray-700"
+              placeholder="Seu nome"
+              required
+            />
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700">Email</label>
-            <input type="email" className="mt-1 block w-full p-2 border rounded-lg text-gray-700" placeholder="Seu email" />
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleInputChange}
+              className="mt-1 block w-full p-2 border rounded-lg text-gray-700"
+              placeholder="Seu email"
+              required
+            />
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700">Telefone</label>
-            <input type="tel" className="mt-1 block w-full p-2 border rounded-lg text-gray-700" placeholder="Seu telefone" />
+            <input
+              type="tel"
+              name="phone"
+              value={formData.phone}
+              onChange={handleInputChange}
+              className="mt-1 block w-full p-2 border rounded-lg text-gray-700"
+              placeholder="Seu telefone"
+              required
+            />
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700">Mensagem</label>
-            <textarea className="mt-1 block w-full p-2 border rounded-lg text-gray-700" rows={4} placeholder="Escreva sua mensagem"></textarea>
+            <textarea
+              name="message"
+              value={formData.message}
+              onChange={handleInputChange}
+              className="mt-1 block w-full p-2 border rounded-lg text-gray-700"
+              rows={4}
+              placeholder="Escreva sua mensagem"
+              required
+            />
           </div>
-          <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">Enviar</button>
+          <button
+            type="submit"
+            className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700"
+          >
+            Enviar
+          </button>
         </form>
+        {status && <p className="mt-4 text-center text-sm">{status}</p>}
       </section>
     </div>
   );
