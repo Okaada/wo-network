@@ -27,7 +27,7 @@ const ContactForm = () => {
         body: JSON.stringify({
           to: "contato@wonetwork.com.br", // E-mail da empresa
           subject: `Contato de ${formData.name}`, // Assunto do e-mail
-          text: `Mensagem: ${formData.message}`,
+          text: `Telefone para contato: ${formData.phone}\nMensagem: ${formData.message}`,
           email: formData.email
         }),
       });
@@ -99,7 +99,16 @@ const ContactForm = () => {
       >
         Enviar
       </button>
-      {status && <p className="mt-4 text-center text-sm">{status}</p>}
+      {status && (
+        <p
+          className={`mt-4 text-center text-sm ${status.includes('sucesso')
+              ? 'text-green-600'
+              : 'text-red-600'
+            }`}
+        >
+          {status}
+        </p>
+      )}
     </form>
   );
 };
