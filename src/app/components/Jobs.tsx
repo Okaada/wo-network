@@ -36,7 +36,7 @@ const Jobs = () => {
               <p className="mt-3 text-gray-600">
                 Oferecemos suporte especializado e serviços completos para sua infraestrutura de TI, incluindo:<br></br>
                 • Firewall Fortigate e segurança de rede.<br></br>
-                • Apoio na implantação do SAP S/4HANA.<br></br>
+                • Suporte integral na infraestrutura para o projeto SAP S/4HANA.<br></br>
                 • WSUS e atualização centralizada de sistemas.<br></br>
                 • Migração de Active Directory e ambientes de domínio.<br></br>
                 • Virtualização com VMware e Hyper-V.<br></br>

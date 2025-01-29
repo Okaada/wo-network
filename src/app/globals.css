@@ -1,7 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap'); */
 
 
 :root {
@@ -19,7 +18,6 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  /* font-family: Arial, Helvetica, sans-serif; */
 }
 
 @layer utilities {
@@ -42,3 +40,4 @@ html {
   opacity: 1; /* Slide ativo em destaque */
   transform: scale(1); /* Slide ativo em tamanho original */
 }
+
