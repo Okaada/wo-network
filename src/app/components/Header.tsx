@@ -9,6 +9,10 @@ import NavLink from '@/app/components/navlink';
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const handleNavClick = () => {
+    setIsOpen(false);
+  };
+
   return (
     <nav className="fixed top-0 left-0 w-full bg-white bg-opacity-95 shadow-lg z-50">
       <div className="container mx-auto flex justify-between items-center p-4">
@@ -32,12 +36,12 @@ const Header = () => {
       </div>
       {isOpen && (
         <div className="md:hidden bg-white">
-          <a href="#apresentacao" className="block px-4 py-2 text-yellow-500 font-bold hover:text-yellow-600 transition duration-300">Home</a>
-          <a href="#clientes" className="block px-4 py-2 text-yellow-500 font-bold hover:text-yellow-600 transition duration-300">Clientes</a>
-          <a href="#trabalhos" className="block px-4 py-2 text-yellow-500 font-bold hover:text-yellow-600 transition duration-300">Soluções</a>
-          <a href="#sobre" className="block px-4 py-2 text-yellow-500 font-bold hover:text-yellow-600 transition duration-300">Sobre Nós</a>
-          <a href="#profissionais" className="block px-4 py-2 text-yellow-500 font-bold hover:text-yellow-600 transition duration-300">Profissionais</a>
-          <a href="#contato" className="block px-4 py-2 text-yellow-500 font-bold hover:text-yellow-600 transition duration-300">Contato</a>
+          <a href="#apresentacao" onClick={handleNavClick} className="block px-4 py-2 text-yellow-500 font-bold hover:text-yellow-600 transition duration-300">Home</a>
+          <a href="#clientes" onClick={handleNavClick} className="block px-4 py-2 text-yellow-500 font-bold hover:text-yellow-600 transition duration-300">Clientes</a>
+          <a href="#trabalhos" onClick={handleNavClick} className="block px-4 py-2 text-yellow-500 font-bold hover:text-yellow-600 transition duration-300">Soluções</a>
+          <a href="#sobre" onClick={handleNavClick} className="block px-4 py-2 text-yellow-500 font-bold hover:text-yellow-600 transition duration-300">Sobre Nós</a>
+          <a href="#profissionais" onClick={handleNavClick} className="block px-4 py-2 text-yellow-500 font-bold hover:text-yellow-600 transition duration-300">Profissionais</a>
+          <a href="#contato" onClick={handleNavClick} className="block px-4 py-2 text-yellow-500 font-bold hover:text-yellow-600 transition duration-300">Contato</a>
         </div>
       )}
     </nav>
