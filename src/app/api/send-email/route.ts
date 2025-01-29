@@ -22,7 +22,7 @@ export async function POST(req: Request) {
     });
     
     const info = await transporter.sendMail({
-      from: `"Site WO" <${process.env.SMTP_USER}>`, // Seu e-mail como remetente
+      from: `"Site WO" <${email}>`, // Seu e-mail como remetente
       to: 'contato@wonetwork.com.br', // E-mail da lista de distribuição
       subject: subject, // Assunto do e-mail
       text: text, // Mensagem no corpo do e-mail
