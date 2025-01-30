@@ -26,7 +26,6 @@ const Header = () => {
         </div>
         <div className={`hidden md:flex space-x-8`}>
           <NavLink href="#apresentacao" text="Home" />
-          <NavLink href="#clientes" text="Clientes" />
           <NavLink href="#trabalhos" text="Soluções" />
           <NavLink href="#sobre" text="Sobre Nós" />
           <NavLink href="#profissionais" text="Nossos Profissionais" />
@@ -37,7 +36,6 @@ const Header = () => {
       {isOpen && (
         <div className="md:hidden bg-white">
           <a href="#apresentacao" onClick={handleNavClick} className="block px-4 py-2 text-yellow-500 font-bold hover:text-yellow-600 transition duration-300">Home</a>
-          <a href="#clientes" onClick={handleNavClick} className="block px-4 py-2 text-yellow-500 font-bold hover:text-yellow-600 transition duration-300">Clientes</a>
           <a href="#trabalhos" onClick={handleNavClick} className="block px-4 py-2 text-yellow-500 font-bold hover:text-yellow-600 transition duration-300">Soluções</a>
           <a href="#sobre" onClick={handleNavClick} className="block px-4 py-2 text-yellow-500 font-bold hover:text-yellow-600 transition duration-300">Sobre Nós</a>
           <a href="#profissionais" onClick={handleNavClick} className="block px-4 py-2 text-yellow-500 font-bold hover:text-yellow-600 transition duration-300">Profissionais</a>
