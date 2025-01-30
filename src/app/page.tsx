@@ -4,7 +4,6 @@ import Header from './components/Header';
 import ContactForm from './components/ContactForm';
 import Carousel from './components/Carousel';
 import HeroSection from './components/HeroSection';
-import Customers from './components/Customers';
 import Jobs from './components/Jobs';
 import About from './components/About';
 
@@ -21,9 +20,6 @@ const CompanyPage = () => {
         <div id="hero-section" className="relative bg-white min-h-screen">
           <HeroSection />
         </div>
-        <section id="clientes" className="py-12 px-4 sm:px-8 bg-gray-50">
-          <Customers />
-        </section>
         <section id="trabalhos" className="py-12 px-4 sm:px-8 bg-white">
           <Jobs />
         </section>
