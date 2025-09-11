@@ -10,20 +10,24 @@ export async function POST(req: Request) {
     }
 
     const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: parseInt(process.env.SMTP_PORT!, 10),
-      secure: true,
+      host: process.env.AWS_SES_SMTP_HOST || 'email-smtp.us-east-1.amazonaws.com',
+      port: parseInt(process.env.AWS_SES_SMTP_PORT || '587', 10),
+      secure: false, // true para 465, false para outros ports
       auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS, 
+        user: process.env.AWS_SES_SMTP_USERNAME,
+        pass: process.env.AWS_SES_SMTP_PASSWORD,
       },
+      tls: {
+        rejectUnauthorized: false
+      }
     });
     
     const info = await transporter.sendMail({
-      from: `"Site WO" <${email}>`,
+      from: process.env.AWS_SES_FROM_EMAIL || 'contato@wonetwork.com.br',
       to: 'contato@wonetwork.com.br',
+      replyTo: email, // Email do usuário para resposta
       subject: subject,
-      text: text, 
+      text: `Email enviado por: ${email}\n\n${text}`, 
     });
 
     return NextResponse.json({ message: 'Email enviado com sucesso!', info });
