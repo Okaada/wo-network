@@ -3,122 +3,79 @@ import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import 'swiper/css/navigation';
-import 'swiper/css/effect-coverflow'; // Importa o estilo do efeito Coverflow
-import { Pagination, Navigation, EffectCoverflow } from 'swiper/modules';
+import { Pagination } from 'swiper/modules';
+
+const certifications = [
+    { src: '/images/itil.png', alt: 'ITIL Fundamentals', label: 'ITIL' },
+    { src: '/images/cobit.png', alt: 'COBIT Fundamentals', label: 'COBIT' },
+    { src: '/images/itsm20000.png', alt: 'ISO/IEC 20000', label: 'ISO 20000' },
+    { src: '/images/az900.png', alt: 'Microsoft Azure Fundamentals (AZ-900)', label: 'AZ-900' },
+    { src: '/images/adm.png', alt: 'Microsoft Azure Administrator (AZ-104)', label: 'AZ-104' },
+    { src: '/images/azure-arch.png', alt: 'Azure Solutions Architect Expert (AZ-305)', label: 'AZ-305' },
+    { src: '/images/desk.png', alt: 'Azure Virtual Desktop Specialty (AZ-140)', label: 'AZ-140' },
+];
+
+const CertCard = ({ src, alt, label }: { src: string; alt: string; label: string }) => (
+    <div className="flex flex-col items-center p-6 bg-surface rounded-2xl border border-[var(--border)] hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
+        <div className="w-28 h-28 flex items-center justify-center mb-3">
+            <img src={src} alt={alt} className="max-w-full max-h-full object-contain" />
+        </div>
+        <span className="text-sm font-semibold text-text-primary">{label}</span>
+    </div>
+);
 
 const Carousel = () => {
     return (
-        <section>
-            <div className="container mx-auto flex flex-col items-center text-center z-10 relative">
-                <div className="w-full md:w-2/3 space-y-6">
-                    <h2 className="text-3xl sm:text-5xl font-bold mb-6" style={{ color: '#ffc929' }}>
+        <div className="container mx-auto">
+            <div className="flex flex-col items-center text-center">
+                <div className="w-full md:w-2/3 space-y-4 mb-14">
+                    <p className="text-brand font-medium text-sm uppercase tracking-wider">Nossa equipe</p>
+                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-text-primary">
                         Nossos Profissionais
                     </h2>
-                    <p className="text-lg sm:text-xl text-gray-700 leading-relaxed">
-                        Nossa equipe é composta por especialistas altamente qualificados, certificados em tecnologias e frameworks reconhecidos globalmente. Esse nível de especialização nos permite oferecer soluções tecnológicas de ponta, sob medida para atender às necessidades mais exigentes.
-                    </p>
-                    <p className="text-lg sm:text-xl text-gray-700 leading-relaxed">
-                        Confira algumas das certificações que destacam nosso compromisso com a excelência:
-                    </p>
-
-                    {/* Carrossel de certificações */}
-                    <div className="w-full mt-8">
-                        <Swiper
-                            modules={[Pagination, Navigation, EffectCoverflow]}
-                            spaceBetween={30}
-                            slidesPerView={1}
-                            loop={true} // Ativa o looping
-                            navigation
-                            pagination={{ clickable: true }}
-                            centeredSlides={true} // Centraliza o slide ativo
-                            effect="coverflow" // Adiciona o efeito Coverflow
-                            coverflowEffect={{
-                                rotate: 30, // Ângulo de rotação do slide
-                                stretch: 0, // Espaçamento entre os slides
-                                depth: 100, // Profundidade
-                                modifier: 1, // Intensidade do efeito
-                                slideShadows: false, // Desativa sombras nos slides
-                            }}
-                            breakpoints={{
-                                640: { slidesPerView: 1 },
-                                768: { slidesPerView: 2 },
-                                1024: { slidesPerView: 3 }, // Mostra 3 itens no desktop
-                            }}
-                            className="w-full"
-                        >
-                            <SwiperSlide>
-                                <div className="flex flex-col items-center">
-                                    <img
-                                        src="/images/itil.png"
-                                        alt="Certificação ITIL Fundamentals"
-                                        className="w-40 h-auto mb-4"
-                                    />
-                                </div>
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <div className="flex flex-col items-center">
-                                    <img
-                                        src="/images/cobit.png"
-                                        alt="Certificação COBIT Fundamentals"
-                                        className="w-40 h-auto mb-4"
-                                    />
-                                </div>
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <div className="flex flex-col items-center">
-                                    <img
-                                        src="/images/itsm20000.png"
-                                        alt="Certificação ISO 20000"
-                                        className="w-40 h-auto mb-4"
-                                    />
-                                </div>
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <div className="flex flex-col items-center">
-                                    <img
-                                        src="/images/az900.png"
-                                        alt="Certificação Microsoft Azure Fundamentals (AZ-900)"
-                                        className="w-40 h-auto mb-4"
-                                    />
-                                </div>
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <div className="flex flex-col items-center">
-                                    <img
-                                        src="/images/adm.png"
-                                        alt="Certificação Microsoft Azure Administrator (AZ-104)"
-                                        className="w-40 h-auto mb-4"
-                                    />
-                                </div>
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <div className="flex flex-col items-center">
-                                    <img
-                                        src="/images/azure-arch.png"
-                                        alt="Certificação Microsoft Azure Solutions Architect Expert (AZ-305)"
-                                        className="w-40 h-auto mb-4"
-                                    />
-                                </div>
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <div className="flex flex-col items-center">
-                                    <img
-                                        src="/images/desk.png"
-                                        alt="Certificação Microsoft Azure Virtual Desktop Specialty (AZ-140)"
-                                        className="w-40 h-auto mb-4"
-                                    />
-                                </div>
-                            </SwiperSlide>
-                        </Swiper>
-                    </div>
-
-                    <p className="text-lg sm:text-xl text-gray-700 leading-relaxed mt-6">
-                        Essas certificações reforçam nossa capacidade de oferecer serviços de consultoria, implementação e suporte com precisão técnica e agilidade, sempre priorizando os objetivos do seu negócio.
+                    <p className="text-lg text-text-secondary leading-relaxed">
+                        Especialistas certificados em tecnologias e frameworks reconhecidos globalmente, oferecendo soluções de ponta sob medida para as necessidades mais exigentes.
                     </p>
                 </div>
+
+                {/* Desktop: balanced rows (4 + 3 centered) */}
+                <div className="hidden md:block w-full max-w-4xl">
+                    <div className="grid grid-cols-4 gap-5 mb-5">
+                        {certifications.slice(0, 4).map((cert) => (
+                            <CertCard key={cert.label} {...cert} />
+                        ))}
+                    </div>
+                    <div className="flex justify-center gap-5">
+                        {certifications.slice(4).map((cert) => (
+                            <div key={cert.label} className="w-[calc(25%-15px)]">
+                                <CertCard {...cert} />
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Mobile: swiper */}
+                <div className="md:hidden w-full">
+                    <Swiper
+                        modules={[Pagination]}
+                        spaceBetween={16}
+                        slidesPerView={2}
+                        pagination={{ clickable: true }}
+                        className="w-full pb-10"
+                    >
+                        {certifications.map((cert) => (
+                            <SwiperSlide key={cert.label}>
+                                <CertCard {...cert} />
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
+                </div>
+
+                <p className="text-base text-text-secondary leading-relaxed mt-12 max-w-2xl">
+                    Essas certificações reforçam nossa capacidade de oferecer serviços de consultoria, implementação e suporte com precisão técnica e agilidade.
+                </p>
             </div>
-        </section>
+        </div>
     );
 };
 
