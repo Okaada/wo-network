@@ -2,22 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
-
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --surface: #ffffff;
+  --surface-alt: #f9fafb;
+  --text-primary: #1f2937;
+  --text-secondary: #4b5563;
+  --border: #e5e7eb;
+  --card-highlight: #fef3c7;
+  --nav-bg: rgba(255, 255, 255, 0.95);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.dark {
+  --background: #0f172a;
+  --foreground: #f1f5f9;
+  --surface: #1e293b;
+  --surface-alt: #0f172a;
+  --text-primary: #f1f5f9;
+  --text-secondary: #cbd5e1;
+  --border: #334155;
+  --card-highlight: #422006;
+  --nav-bg: rgba(15, 23, 42, 0.95);
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
+}
+
+* {
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
 @layer utilities {
@@ -28,16 +43,25 @@ body {
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 80px;
 }
 
 .swiper-slide {
-  opacity: 0.5; /* Opacidade inicial para os slides inativos */
-  transform: scale(0.85); /* Reduz levemente o tamanho dos slides inativos */
-  transition: transform 0.3s ease, opacity 0.3s ease; /* Transição suave */
+  opacity: 0.5;
+  transform: scale(0.85);
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .swiper-slide-active {
-  opacity: 1; /* Slide ativo em destaque */
-  transform: scale(1); /* Slide ativo em tamanho original */
+  opacity: 1;
+  transform: scale(1);
 }
 
+.dark .swiper-button-next,
+.dark .swiper-button-prev {
+  color: #ffc929;
+}
+
+.dark .swiper-pagination-bullet-active {
+  background: #ffc929;
+}

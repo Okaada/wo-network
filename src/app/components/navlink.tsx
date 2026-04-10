@@ -13,14 +13,14 @@ const NavLink: React.FC<NavLinkProps> = ({ href, text, external = false }) => {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="text-yellow-500 font-bold hover:text-yellow-600 transition duration-300"
+      className="text-brand font-bold hover:text-brand-dark dark:hover:text-brand-light transition duration-300"
     >
       {text}
     </a>
   ) : (
     <Link
       href={href}
-      className="text-yellow-500 font-bold hover:text-yellow-600 transition duration-300"
+      className="text-brand font-bold hover:text-brand-dark dark:hover:text-brand-light transition duration-300"
     >
       {text}
     </Link>
